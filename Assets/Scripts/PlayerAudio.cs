@@ -4,11 +4,10 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerMovement))]
 public class PlayerAudio : MonoBehaviour
 {
-    [SerializeField] private AudioClip fartSound;
+    [SerializeField] private AudioClip jumpSound;
 
     private AudioSource audio;
     private PlayerMovement movement;
-
     private bool played = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -23,7 +22,7 @@ public class PlayerAudio : MonoBehaviour
     {
         if (movement.IsJumping && !played)
         {
-            audio.PlayOneShot(fartSound);
+            audio.PlayOneShot(jumpSound);
             played = true;
         }
         else if (!movement.IsJumping) played = false;

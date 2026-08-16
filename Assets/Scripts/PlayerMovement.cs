@@ -11,10 +11,10 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private float moveSpeed = 2;
     [SerializeField] private float crouchMultiplier = 0.5f;
-    [SerializeField] private float crouchSpeed = 2;
     [SerializeField] private float sprintMultiplier = 2f;
-    [SerializeField] private float rotationSpeed = 2;
     [SerializeField] private float jumpHeight = 1;
+    [SerializeField] private float crouchSpeed = 2;
+    [SerializeField] private float rotationSpeed = 2;
     [SerializeField] private float yGroundVelocity = -1;
 
     private CharacterController controller;

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CameraTargetPosition : MonoBehaviour
+public class PlayerCameraTarget : MonoBehaviour
 {
     private CharacterController controller;
 

@@ -1167,10 +1167,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   moveSpeed: 2
   crouchMultiplier: 0.5
-  crouchSpeed: 2
   sprintMultiplier: 2
-  rotationSpeed: 2
   jumpHeight: 1
+  crouchSpeed: 2
+  rotationSpeed: 2
   yGroundVelocity: -1
 --- !u!143 &1625791694
 CharacterController:
@@ -1336,7 +1336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aaea6a39a2664a4e809163e2a552426, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAudio
-  fartSound: {fileID: 8300000, guid: 00f6164f02816c8448fdfcb8f0ca55af, type: 3}
+  jumpSound: {fileID: 8300000, guid: 00f6164f02816c8448fdfcb8f0ca55af, type: 3}
 --- !u!1 &1963987702
 GameObject:
   m_ObjectHideFlags: 0
@@ -1354,6 +1354,7 @@ GameObject:
   - component: {fileID: 1963987712}
   - component: {fileID: 1963987710}
   - component: {fileID: 1963987711}
+  - component: {fileID: 1963987713}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -1628,8 +1629,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FOVManager
   fovSpeed: 2
   fovMultiplier: 1
-  speedThreshold: 0.01
-  maxSpeed: 10
+  targetSpeedThreshold: 0.01
+  maxTargetSpeed: 10
 --- !u!82 &1963987712
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1727,6 +1728,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1963987713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963987702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27b2d3732e4172b43bbd7a96757bdd56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraAudio
+  audioSpeed: 1
+  targetSpeedThreshold: 0.01
+  maxTargetSpeed: 10
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
