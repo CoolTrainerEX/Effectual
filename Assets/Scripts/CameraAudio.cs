@@ -1,6 +1,7 @@
 using Unity.Cinemachine;
 using UnityEngine;
 
+[RequireComponent(typeof(CinemachineCamera))]
 [RequireComponent(typeof(AudioSource))]
 public class CameraAudio : MonoBehaviour
 {
