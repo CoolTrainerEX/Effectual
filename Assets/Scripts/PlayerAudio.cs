@@ -20,11 +20,11 @@ public class PlayerAudio : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (movement.IsJumping && !played)
+        if (movement.IsJumping != played)
         {
-            audio.PlayOneShot(jumpSound);
-            played = true;
+            played = !played;
+
+            if (played) audio.PlayOneShot(jumpSound);
         }
-        else if (!movement.IsJumping) played = false;
     }
 }

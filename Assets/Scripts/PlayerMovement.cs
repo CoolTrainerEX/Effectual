@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float sprintMultiplier = 2f;
     [SerializeField] private float jumpHeight = 1;
     [SerializeField] private float crouchSpeed = 2;
-    [SerializeField] private float rotationSpeed = 2;
+    [SerializeField] private float rotationSpeed = 100;
     [SerializeField] private float yGroundVelocity = -1;
 
     private CharacterController controller;
@@ -60,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else yVelocity += Physics.gravity.y * Time.deltaTime;
 
-        if (Motion != Vector3.zero) transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Motion), rotationSpeed * Time.deltaTime);
+        if (Motion != Vector3.zero) transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(Motion), rotationSpeed * Time.deltaTime);
 
         Motion = Motion * moveSpeed + yVelocity * Vector3.up;
 
