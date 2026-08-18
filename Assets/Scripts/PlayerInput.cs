@@ -14,30 +14,35 @@ public class PlayerInput : MonoBehaviour
         InputSystem.actions.FindAction("Move").performed += OnMove;
         InputSystem.actions.FindAction("Move").canceled += OnMove;
         InputSystem.actions.FindAction("Crouch").performed += OnCrouch;
-        InputSystem.actions.FindAction("Crouch").canceled += OnCrouch;
         InputSystem.actions.FindAction("Jump").performed += OnJump;
         InputSystem.actions.FindAction("Jump").canceled += OnJump;
         InputSystem.actions.FindAction("Sprint").performed += OnSprint;
-        InputSystem.actions.FindAction("Sprint").canceled += OnSprint;
     }
 
     private void OnMove(InputAction.CallbackContext context)
     {
         Move = context.ReadValue<Vector2>();
+
+        if (context.canceled) IsSprinting = false;
     }
 
     private void OnCrouch(InputAction.CallbackContext context)
     {
-        IsCrouching = context.ReadValue<float>() != 0;
+        IsCrouching = !IsCrouching;
+        IsSprinting = false;
     }
 
     private void OnJump(InputAction.CallbackContext context)
     {
-        IsJumping = context.ReadValue<float>() != 0;
+        IsJumping = context.performed;
     }
 
     private void OnSprint(InputAction.CallbackContext context)
     {
-        IsSprinting = context.ReadValue<float>() != 0;
+        if (Move != Vector2.zero)
+        {
+            IsSprinting = !IsSprinting;
+            IsCrouching = false;
+        }
     }
 }
