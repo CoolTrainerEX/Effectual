@@ -35,6 +35,7 @@ public class PlayerInput : MonoBehaviour
     private void OnJump(InputAction.CallbackContext context)
     {
         IsJumping = context.performed;
+        IsCrouching = false;
     }
 
     private void OnSprint(InputAction.CallbackContext context)

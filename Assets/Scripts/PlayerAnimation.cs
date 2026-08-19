@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(PlayerMovement))]
 public class PlayerAnimation : MonoBehaviour
 {
@@ -11,24 +11,24 @@ public class PlayerAnimation : MonoBehaviour
     private static readonly int MotionZHash = Animator.StringToHash("MotionZ");
     private static readonly int MotionXHash = Animator.StringToHash("MotionX");
 
-    [SerializeField] private float animationDampTime = 0.05f;
+    [SerializeField, Min(0)] private float animationDampTime = 0.05f;
 
-    private CharacterController controller;
     private Animator animator;
+    private CharacterController controller;
     private PlayerMovement movement;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+        controller = GetComponent<CharacterController>();
         movement = GetComponent<PlayerMovement>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 localMotion = transform.InverseTransformDirection(movement.Motion);
+        var localMotion = transform.InverseTransformDirection(movement.Motion);
 
         if (movement.IsJumping) animator.SetTrigger(JumpHash);
 
