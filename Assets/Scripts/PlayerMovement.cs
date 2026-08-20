@@ -63,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
         else yVelocity += Physics.gravity.y * Time.deltaTime;
 
         if (isSprinting) Motion *= sprintMultiplier;
-        if (Motion != Vector3.zero) transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(Motion), rotationSpeed * Time.deltaTime);
+        if (Motion != Vector3.zero) transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0), rotationSpeed * Time.deltaTime);
 
         Motion = Motion * moveSpeed + yVelocity * Vector3.up;
 
