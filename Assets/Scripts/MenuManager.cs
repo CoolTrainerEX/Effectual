@@ -16,18 +16,18 @@ public class MenuManager : MonoBehaviour
         GetComponent<PanelRenderer>().RegisterUIReloadCallback(OnUIReload);
     }
 
-    private void OnUIReload(PanelRenderer renderer, VisualElement rootElement)
+    private static void OnUIReload(PanelRenderer renderer, VisualElement rootElement)
     {
         rootElement.Q<Button>("Play").clicked += OnPlay;
         rootElement.Q<Button>("Exit").clicked += OnExit;
     }
 
-    private void OnPlay()
+    private static void OnPlay()
     {
         SceneManager.LoadScene("Game");
     }
 
-    private void OnExit()
+    private static void OnExit()
     {
         Application.Quit();
     }

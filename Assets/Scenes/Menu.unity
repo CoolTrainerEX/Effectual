@@ -395,6 +395,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2015208366}
   - component: {fileID: 2015208365}
+  - component: {fileID: 2015208369}
   - component: {fileID: 2015208368}
   - component: {fileID: 2015208367}
   m_Layer: 5
@@ -501,6 +502,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5693a4da95857b54284f37e869c55c1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIInput
+--- !u!114 &2015208369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015208364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff41df9b29034d84180bfbecf4a574d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ControlsManager
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

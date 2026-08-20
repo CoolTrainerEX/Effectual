@@ -28,7 +28,9 @@ public class PauseInput : MonoBehaviour
 
     public void TogglePause()
     {
-        if (IsPaused = !IsPaused)
+        IsPaused = !IsPaused;
+
+        if (IsPaused)
         {
             playerActionMap.Disable();
             uiActionMap.Enable();

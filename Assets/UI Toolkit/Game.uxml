@@ -1,0 +1,12 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements"
+    xmlns:uie="UnityEditor.UIElements"
+    noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="Controls"
+        src="project://database/Assets/UI%20Toolkit/Controls.uxml?fileID=9197481963319205126&amp;guid=c8090a43374737b4bbcd61d0c08cc5dc&amp;type=3#Controls" />
+    <ui:Template name="Pause"
+        src="project://database/Assets/UI%20Toolkit/Pause.uxml?fileID=9197481963319205126&amp;guid=22e5ba54cb721414e9d1cf26b5f051de&amp;type=3#Pause" />
+    <Style
+        src="project://database/Assets/UI%20Toolkit/Game.uss?fileID=7433441132597879392&amp;guid=99222428938de514a91b8718524ae9c5&amp;type=3#Game" />
+    <ui:Instance template="Controls" name="Controls" />
+    <ui:Instance template="Pause" name="Pause" />
+</ui:UXML>

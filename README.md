@@ -30,4 +30,4 @@
 Insert Panel Renderer to scene.
 
 - [Menu](Assets/UI%20Toolkit/Menu.uxml)
-- [Pause](Assets/UI%20Toolkit/Pause.uxml)
+- [Game](Assets/UI%20Toolkit/Game.uxml)

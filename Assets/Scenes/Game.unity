@@ -904,6 +904,7 @@ GameObject:
   m_Component:
   - component: {fileID: 961329117}
   - component: {fileID: 961329116}
+  - component: {fileID: 961329121}
   - component: {fileID: 961329120}
   - component: {fileID: 961329119}
   - component: {fileID: 961329118}
@@ -964,7 +965,7 @@ PanelRenderer:
   m_MaskInteraction: 0
   serializedVersion: 1
   m_PanelSettings: {fileID: 11400000, guid: 48893df8cbcabd642a571ea747310a51, type: 2}
-  sourceAsset: {fileID: 9197481963319205126, guid: 22e5ba54cb721414e9d1cf26b5f051de, type: 3}
+  sourceAsset: {fileID: 9197481963319205126, guid: 08c080f5f6aa60f49ad18e11fe62e323, type: 3}
   m_ParentUI: {fileID: 0}
   m_WorldSpaceSizeMode: 1
   m_WorldSpaceWidth: 1920
@@ -1024,6 +1025,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bebe892887cbd3542b1b9cf52de00241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PauseInput
+--- !u!114 &961329121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961329115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff41df9b29034d84180bfbecf4a574d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ControlsManager
 --- !u!1001 &1206342455
 PrefabInstance:
   m_ObjectHideFlags: 0
