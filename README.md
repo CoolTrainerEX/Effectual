@@ -31,3 +31,7 @@ Insert Panel Renderer to scene.
 
 - [Menu](Assets/UI%20Toolkit/Menu.uxml)
 - [Game](Assets/UI%20Toolkit/Game.uxml)
+
+## Audio
+
+[Mixer](Assets/Audio/AudioMixer.mixer)
