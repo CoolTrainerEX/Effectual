@@ -9,7 +9,7 @@ public class PlayerInput : MonoBehaviour
     public bool IsSprinting { get; private set; } = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
         InputSystem.actions.FindAction("Move").performed += OnMove;
         InputSystem.actions.FindAction("Move").canceled += OnMove;

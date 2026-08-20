@@ -34,7 +34,7 @@ internal class FootData
 public class PlayerAudio : MonoBehaviour
 {
     [SerializeField] private List<WalkSounds> walkSounds;
-    [SerializeField] private AudioClip jumpSound;
+    [SerializeField] private List<AudioClip> jumpSounds;
     [SerializeField] private float footThreshold = 0.2f;
 
     private AudioSource audio;
@@ -43,7 +43,7 @@ public class PlayerAudio : MonoBehaviour
     private bool playedJump = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
         audio = GetComponent<AudioSource>();
         movement = GetComponent<PlayerMovement>();
@@ -59,22 +59,21 @@ public class PlayerAudio : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         foreach (var foot in feet.Values)
         {
             var raycast = Physics.Raycast(foot.Transform.position, Vector3.down, out RaycastHit hitInfo, footThreshold);
-            var sounds = raycast ? walkSounds.First(walkSound => hitInfo.transform.CompareTag(walkSound.tag)).sounds : walkSounds[0].sounds;
 
-            Play(raycast, ref foot.Played, sounds[Random.Range(0, sounds.Count)]);
+            Play(raycast, ref foot.Played, raycast ? walkSounds.First(walkSound => hitInfo.transform.CompareTag(walkSound.tag)).sounds : walkSounds[0].sounds);
         }
 
-        Play(movement.IsJumping, ref playedJump, jumpSound);
+        Play(movement.IsJumping, ref playedJump, jumpSounds);
     }
 
-    private void Play(bool condition, ref bool toggle, AudioClip clip)
+    private void Play(bool condition, ref bool toggle, List<AudioClip> clips)
     {
-        if (condition && !toggle) audio.PlayOneShot(clip);
+        if (condition && !toggle) audio.PlayOneShot(clips[Random.Range(0, clips.Count)]);
 
         toggle = condition;
     }

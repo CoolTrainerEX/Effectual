@@ -1,4 +1,3 @@
 ﻿<Solution>
-  <Project Path="Unity.InputSystem.InGameHints.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
 </Solution>

@@ -1,0 +1,42 @@
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class PauseInput : MonoBehaviour
+{
+    public bool IsPaused { get; private set; } = false;
+
+    private InputActionMap playerActionMap;
+    private InputActionMap uiActionMap;
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private void Start()
+    {
+        playerActionMap = InputSystem.actions.FindActionMap("Player");
+        uiActionMap = InputSystem.actions.FindActionMap("UI");
+
+
+        InputSystem.actions.FindAction("Pause").performed += OnPause;
+
+        playerActionMap.Enable();
+        uiActionMap.Disable();
+    }
+
+    private void OnPause(InputAction.CallbackContext context)
+    {
+        TogglePause();
+    }
+
+    public void TogglePause()
+    {
+        if (IsPaused = !IsPaused)
+        {
+            playerActionMap.Disable();
+            uiActionMap.Enable();
+        }
+        else
+        {
+            playerActionMap.Enable();
+            uiActionMap.Disable();
+        }
+    }
+}
