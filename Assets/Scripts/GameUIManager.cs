@@ -38,6 +38,7 @@ public class GameUIManager : MonoBehaviour
         {
             Time.timeScale = 0;
             pauseElement.style.display = DisplayStyle.Flex;
+            controls.MouseLocked = false;
 
             mixer.SetFloat("MasterVolume", -80);
         }
@@ -45,6 +46,7 @@ public class GameUIManager : MonoBehaviour
         {
             Time.timeScale = 1;
             pauseElement.style.display = DisplayStyle.None;
+            controls.MouseLocked = true;
 
             mixer.SetFloat("MasterVolume", 0);
         }
