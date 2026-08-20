@@ -1,3 +1,7 @@
 TemplateContainer {
     flex-grow: 1;
 }
+
+#Pause {
+    display: none;
+}
