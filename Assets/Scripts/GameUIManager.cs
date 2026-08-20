@@ -17,7 +17,7 @@ public class GameUIManager : MonoBehaviour
     private UIInput uiInput;
     private TemplateContainer controlsElement;
     private TemplateContainer pauseElement;
-    private bool paused = true;
+    private bool paused = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
@@ -27,6 +27,8 @@ public class GameUIManager : MonoBehaviour
         uiInput = GetComponent<UIInput>();
 
         GetComponent<PanelRenderer>().RegisterUIReloadCallback(OnUIReload);
+
+        controls.MouseLocked = true;
     }
 
     // Update is called once per frame
@@ -71,8 +73,11 @@ public class GameUIManager : MonoBehaviour
         pauseInput.TogglePause();
     }
 
-    private static void OnExit()
+    private void OnExit()
     {
+        Time.timeScale = 1;
+
+        mixer.SetFloat("MasterVolume", 0);
         SceneManager.LoadScene("Menu");
     }
 }
