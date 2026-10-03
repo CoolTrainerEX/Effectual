@@ -906,8 +906,7 @@ GameObject:
   - component: {fileID: 961329116}
   - component: {fileID: 961329121}
   - component: {fileID: 961329120}
-  - component: {fileID: 961329119}
-  - component: {fileID: 961329118}
+  - component: {fileID: 961329122}
   m_Layer: 5
   m_Name: PanelRenderer
   m_TagString: Untagged
@@ -988,31 +987,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &961329118
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 961329115}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2322483f253afe04c9a8f5dc1183d057, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PauseManager
-  mixer: {fileID: 24100000, guid: d0956d88109450147a2c7f95d52fe3a8, type: 2}
---- !u!114 &961329119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 961329115}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5693a4da95857b54284f37e869c55c1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UIInput
 --- !u!114 &961329120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1037,6 +1011,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff41df9b29034d84180bfbecf4a574d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ControlsManager
+--- !u!114 &961329122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961329115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2322483f253afe04c9a8f5dc1183d057, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameUIManager
+  mixer: {fileID: 24100000, guid: d0956d88109450147a2c7f95d52fe3a8, type: 2}
 --- !u!1001 &1206342455
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1528,20 +1515,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAudio
   walkSounds:
-  - sounds:
-    - {fileID: 8300000, guid: 8c4df421d2f2fb04c8e3d7ee3fe7bd0f, type: 3}
-    - {fileID: 8300000, guid: 2395f9612d9910c4daaff26ccaed810a, type: 3}
-    - {fileID: 8300000, guid: 1eaf20d9fab98c6419f745bbfa8dc114, type: 3}
-    - {fileID: 8300000, guid: 9dcd9d3f592b1fd4fb7b6a5a48388bc6, type: 3}
-    - {fileID: 8300000, guid: f639a6b0e39ebd448bd8bc28a3d4c332, type: 3}
-    tag: Concrete
-  - sounds:
+  - key: Dirt
+    value:
     - {fileID: 8300000, guid: 253372cec20b3bc4e8c219a0e0628f21, type: 3}
     - {fileID: 8300000, guid: 5dc68cbe37139bf4890326d3cc8bccfa, type: 3}
     - {fileID: 8300000, guid: f8a0cbe44b1cfdf4da1bcd741d8f7fc3, type: 3}
     - {fileID: 8300000, guid: 07f804b721398044aa73a306088fb4c4, type: 3}
     - {fileID: 8300000, guid: e47fb5288d66c9f42b1d5f68272f9ca3, type: 3}
-    tag: Dirt
+  - key: Concrete
+    value:
+    - {fileID: 8300000, guid: 8c4df421d2f2fb04c8e3d7ee3fe7bd0f, type: 3}
+    - {fileID: 8300000, guid: 2395f9612d9910c4daaff26ccaed810a, type: 3}
+    - {fileID: 8300000, guid: 1eaf20d9fab98c6419f745bbfa8dc114, type: 3}
+    - {fileID: 8300000, guid: 9dcd9d3f592b1fd4fb7b6a5a48388bc6, type: 3}
+    - {fileID: 8300000, guid: f639a6b0e39ebd448bd8bc28a3d4c332, type: 3}
   jumpSounds:
   - {fileID: 8300000, guid: cf3992879fcfb07459b888cd435fd839, type: 3}
   - {fileID: 8300000, guid: eed83163a17f4564cb8efc9becb38fd2, type: 3}
@@ -1849,8 +1836,8 @@ GameObject:
   - component: {fileID: 1963987709}
   - component: {fileID: 1963987714}
   - component: {fileID: 1963987712}
-  - component: {fileID: 1963987711}
   - component: {fileID: 1963987713}
+  - component: {fileID: 1963987715}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -2047,22 +2034,6 @@ MonoBehaviour:
     NearLimit: 5
     FarLimit: 30
     MaxQualityBoost: 0.2
---- !u!114 &1963987711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1963987702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c43a09953ecd6f4f9246b0d5cbc8e1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CameraFOV
-  fovSmoothTime: 0.1
-  fovMultiplier: 2
-  maxFov: 10
-  targetSpeedThreshold: 0.01
 --- !u!82 &1963987712
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2227,6 +2198,22 @@ MonoBehaviour:
         DecelTime: 0
   PlayerIndex: -1
   AutoEnableInputs: 1
+--- !u!114 &1963987715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963987702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c43a09953ecd6f4f9246b0d5cbc8e1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraFOV
+  fovSmoothTime: 0.1
+  fovMultiplier: 2
+  maxFov: 10
+  targetSpeedThreshold: 0.01
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

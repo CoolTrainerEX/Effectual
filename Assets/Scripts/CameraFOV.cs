@@ -2,7 +2,7 @@ using Unity.Cinemachine;
 using UnityEngine;
 
 [RequireComponent(typeof(CinemachineCamera))]
-public class CameraFOV : MonoBehaviour
+public class CameraFov : MonoBehaviour
 {
     [SerializeField, Min(0)] private float fovSmoothTime = 0.1f;
     [SerializeField, Min(0)] private float fovMultiplier = 2;

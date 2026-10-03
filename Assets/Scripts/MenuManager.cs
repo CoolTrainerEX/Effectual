@@ -3,21 +3,21 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 [RequireComponent(typeof(PanelRenderer))]
-[RequireComponent(typeof(UIInput))]
 public class MenuManager : MonoBehaviour
 {
-    private UIInput input;
+    private int uiVersion = -1;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
-        input = GetComponent<UIInput>();
-
         GetComponent<PanelRenderer>().RegisterUIReloadCallback(OnUIReload);
     }
 
-    private static void OnUIReload(PanelRenderer renderer, VisualElement rootElement)
+    private void OnUIReload(PanelRenderer panelRenderer, VisualElement rootElement, int version)
     {
+        if (uiVersion == version) return;
+
+        uiVersion = version;
         rootElement.Q<Button>("Play").clicked += OnPlay;
         rootElement.Q<Button>("Exit").clicked += OnExit;
     }

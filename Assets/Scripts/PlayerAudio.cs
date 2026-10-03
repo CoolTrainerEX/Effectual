@@ -1,18 +1,7 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
-
-/// <summary>
-/// In Unity 6.6, use <see cref="Dictionary{TKey, TValue}" />.
-/// </summary>
-[Serializable]
-internal struct WalkSounds
-{
-    public List<AudioClip> sounds;
-    public string tag;
-}
 
 /// <summary>
 /// Data on foot for animations.
@@ -33,7 +22,7 @@ internal class FootData
 [RequireComponent(typeof(PlayerMovement))]
 public class PlayerAudio : MonoBehaviour
 {
-    [SerializeField] private List<WalkSounds> walkSounds;
+    [SerializeField] private Dictionary<string, List<AudioClip>> walkSounds;
     [SerializeField] private List<AudioClip> jumpSounds;
     [SerializeField] private float footThreshold = 0.2f;
 
@@ -65,7 +54,7 @@ public class PlayerAudio : MonoBehaviour
         {
             var raycast = Physics.Raycast(foot.Transform.position, Vector3.down, out RaycastHit hitInfo, footThreshold);
 
-            Play(raycast, ref foot.Played, raycast ? walkSounds.First(walkSound => hitInfo.transform.CompareTag(walkSound.tag)).sounds : walkSounds[0].sounds);
+            Play(raycast, ref foot.Played, raycast ? walkSounds[hitInfo.transform.tag] : walkSounds.Values.First());
         }
 
         Play(movement.IsJumping, ref playedJump, jumpSounds);

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
@@ -7,24 +6,22 @@ using UnityEngine.UIElements;
 [RequireComponent(typeof(PanelRenderer))]
 [RequireComponent(typeof(ControlsManager))]
 [RequireComponent(typeof(PauseInput))]
-[RequireComponent(typeof(UIInput))]
 public class GameUIManager : MonoBehaviour
 {
     [SerializeField] private AudioMixer mixer;
 
     private ControlsManager controls;
     private PauseInput pauseInput;
-    private UIInput uiInput;
     private TemplateContainer controlsElement;
     private TemplateContainer pauseElement;
     private bool paused = false;
+    private int uiVersion = -1;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
         controls = GetComponent<ControlsManager>();
         pauseInput = GetComponent<PauseInput>();
-        uiInput = GetComponent<UIInput>();
 
         GetComponent<PanelRenderer>().RegisterUIReloadCallback(OnUIReload);
 
@@ -59,8 +56,11 @@ public class GameUIManager : MonoBehaviour
         else controlsElement.style.display = DisplayStyle.None;
     }
 
-    private void OnUIReload(PanelRenderer renderer, VisualElement rootElement)
+    private void OnUIReload(PanelRenderer panelRenderer, VisualElement rootElement, int version)
     {
+        if (uiVersion == version) return;
+
+        uiVersion = version;
         controlsElement = rootElement.Q<TemplateContainer>("Controls");
         pauseElement = rootElement.Q<TemplateContainer>("Pause");
 
