@@ -4,10 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(CinemachineCamera))]
 public class CameraFov : MonoBehaviour
 {
-    [SerializeField, Min(0)] private float fovSmoothTime = 0.1f;
-    [SerializeField, Min(0)] private float fovMultiplier = 2;
-    [SerializeField, Min(0)] private float maxFov = 10;
-    [SerializeField, Min(0)] private float targetSpeedThreshold = 0.01f;
+    [SerializeField] private CameraSettings settings;
 
     private CinemachineCamera camera;
     private float baseFov;
@@ -28,7 +25,7 @@ public class CameraFov : MonoBehaviour
         var speed = Vector3.Dot(camera.Follow.position - targetPos, transform.forward) / Time.deltaTime;
         var lens = camera.Lens;
 
-        lens.FieldOfView = Mathf.SmoothDamp(camera.Lens.FieldOfView, Mathf.Abs(speed) > targetSpeedThreshold ? baseFov + Mathf.Clamp(speed * fovMultiplier, -maxFov, maxFov) : baseFov, ref currentVelocity, fovSmoothTime);
+        lens.FieldOfView = Mathf.SmoothDamp(camera.Lens.FieldOfView, Mathf.Abs(speed) > settings.targetSpeedThreshold ? baseFov + Mathf.Clamp(speed * settings.fovMultiplier, -settings.maxFov, settings.maxFov) : baseFov, ref currentVelocity, settings.fovSmoothTime);
         camera.Lens = lens;
         targetPos = camera.Follow.position;
     }

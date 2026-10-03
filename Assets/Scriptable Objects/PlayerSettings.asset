@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7909dfdd5c032e4687edd41e1c34797, type: 3}
+  m_Name: PlayerSettings
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSettings
+  animationDampTime: 0.05
+  walkSounds:
+  - key: Dirt
+    value:
+    - {fileID: 8300000, guid: 253372cec20b3bc4e8c219a0e0628f21, type: 3}
+    - {fileID: 8300000, guid: 5dc68cbe37139bf4890326d3cc8bccfa, type: 3}
+    - {fileID: 8300000, guid: f8a0cbe44b1cfdf4da1bcd741d8f7fc3, type: 3}
+    - {fileID: 8300000, guid: 07f804b721398044aa73a306088fb4c4, type: 3}
+    - {fileID: 8300000, guid: e47fb5288d66c9f42b1d5f68272f9ca3, type: 3}
+  - key: Concrete
+    value:
+    - {fileID: 8300000, guid: 8c4df421d2f2fb04c8e3d7ee3fe7bd0f, type: 3}
+    - {fileID: 8300000, guid: 2395f9612d9910c4daaff26ccaed810a, type: 3}
+    - {fileID: 8300000, guid: 1eaf20d9fab98c6419f745bbfa8dc114, type: 3}
+    - {fileID: 8300000, guid: 9dcd9d3f592b1fd4fb7b6a5a48388bc6, type: 3}
+    - {fileID: 8300000, guid: f639a6b0e39ebd448bd8bc28a3d4c332, type: 3}
+  jumpSounds:
+  - {fileID: 8300000, guid: cf3992879fcfb07459b888cd435fd839, type: 3}
+  - {fileID: 8300000, guid: eed83163a17f4564cb8efc9becb38fd2, type: 3}
+  - {fileID: 8300000, guid: 7272659b1ada8114f9a9b91238f2fd38, type: 3}
+  - {fileID: 8300000, guid: f714b4257bff0f44fa55766f9817490e, type: 3}
+  - {fileID: 8300000, guid: b8300b5f43d54e14b906e07a63509312, type: 3}
+  footThreshold: 0.2
+  moveSpeed: 2
+  crouchMultiplier: 0.5
+  sprintMultiplier: 2
+  jumpHeight: 1
+  crouchSpeed: 2
+  rotationSpeed: 100
+  yGroundVelocity: -1

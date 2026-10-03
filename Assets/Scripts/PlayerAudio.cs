@@ -22,9 +22,7 @@ internal class FootData
 [RequireComponent(typeof(PlayerMovement))]
 public class PlayerAudio : MonoBehaviour
 {
-    [SerializeField] private Dictionary<string, List<AudioClip>> walkSounds;
-    [SerializeField] private List<AudioClip> jumpSounds;
-    [SerializeField] private float footThreshold = 0.2f;
+    [SerializeField] private PlayerSettings settings;
 
     private AudioSource audio;
     private PlayerMovement movement;
@@ -52,12 +50,12 @@ public class PlayerAudio : MonoBehaviour
     {
         foreach (var foot in feet.Values)
         {
-            var raycast = Physics.Raycast(foot.Transform.position, Vector3.down, out RaycastHit hitInfo, footThreshold);
+            var raycast = Physics.Raycast(foot.Transform.position, Vector3.down, out RaycastHit hitInfo, settings.footThreshold);
 
-            Play(raycast, ref foot.Played, raycast ? walkSounds[hitInfo.transform.tag] : walkSounds.Values.First());
+            Play(raycast, ref foot.Played, raycast ? settings.walkSounds[hitInfo.transform.tag] : settings.walkSounds.Values.First());
         }
 
-        Play(movement.IsJumping, ref playedJump, jumpSounds);
+        Play(movement.IsJumping, ref playedJump, settings.jumpSounds);
     }
 
     private void Play(bool condition, ref bool toggle, List<AudioClip> clips)

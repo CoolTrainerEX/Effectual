@@ -9,13 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public bool IsCrouching { get; private set; } = false;
     public bool IsJumping { get; private set; } = false;
 
-    [SerializeField, Min(0)] private float moveSpeed = 2;
-    [SerializeField, Min(0)] private float crouchMultiplier = 0.5f;
-    [SerializeField, Min(0)] private float sprintMultiplier = 2f;
-    [SerializeField, Min(0)] private float jumpHeight = 1;
-    [SerializeField, Min(0)] private float crouchSpeed = 2;
-    [SerializeField, Min(0)] private float rotationSpeed = 100;
-    [SerializeField] private float yGroundVelocity = -1;
+    [SerializeField] private PlayerSettings settings;
 
     private CharacterController controller;
     private PlayerInput input;
@@ -42,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (controller.isGrounded) isSprinting = input.IsSprinting;
 
-        if (IsJumping) yVelocity = Mathf.Sqrt(jumpHeight * -2.0f * Physics.gravity.y);
+        if (IsJumping) yVelocity = Mathf.Sqrt(settings.jumpHeight * -2.0f * Physics.gravity.y);
         else if (controller.isGrounded)
         {
             var controllerRadius = controllerBaseRadius;
@@ -50,22 +44,22 @@ public class PlayerMovement : MonoBehaviour
 
             if (IsCrouching)
             {
-                Motion *= crouchMultiplier;
+                Motion *= settings.crouchMultiplier;
                 controllerRadius *= 2;
                 controllerHeight *= 0.75f;
             }
 
-            controller.radius = Mathf.MoveTowards(controller.radius, controllerRadius, crouchSpeed * Time.deltaTime);
-            controller.height = Mathf.MoveTowards(controller.height, controllerHeight, crouchSpeed * Time.deltaTime);
+            controller.radius = Mathf.MoveTowards(controller.radius, controllerRadius, settings.crouchSpeed * Time.deltaTime);
+            controller.height = Mathf.MoveTowards(controller.height, controllerHeight, settings.crouchSpeed * Time.deltaTime);
             controller.center = new Vector3(controller.center.x, controller.height / 2, controller.center.z);
-            yVelocity = yGroundVelocity;
+            yVelocity = settings.yGroundVelocity;
         }
         else yVelocity += Physics.gravity.y * Time.deltaTime;
 
-        if (isSprinting) Motion *= sprintMultiplier;
-        if (Motion != Vector3.zero) transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0), rotationSpeed * Time.deltaTime);
+        if (isSprinting) Motion *= settings.sprintMultiplier;
+        if (Motion != Vector3.zero) transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0), settings.rotationSpeed * Time.deltaTime);
 
-        Motion = Motion * moveSpeed + yVelocity * Vector3.up;
+        Motion = Motion * settings.moveSpeed + yVelocity * Vector3.up;
 
         controller.Move(Motion * Time.deltaTime);
     }

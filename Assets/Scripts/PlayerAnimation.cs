@@ -11,7 +11,7 @@ public class PlayerAnimation : MonoBehaviour
     private static readonly int MotionZHash = Animator.StringToHash("MotionZ");
     private static readonly int MotionXHash = Animator.StringToHash("MotionX");
 
-    [SerializeField, Min(0)] private float animationDampTime = 0.05f;
+    [SerializeField] private PlayerSettings settings;
 
     private Animator animator;
     private CharacterController controller;
@@ -32,8 +32,8 @@ public class PlayerAnimation : MonoBehaviour
 
         if (movement.IsJumping) animator.SetTrigger(JumpHash);
 
-        animator.SetFloat(MotionXHash, localMotion.x, animationDampTime, Time.deltaTime);
-        animator.SetFloat(MotionZHash, localMotion.z, animationDampTime, Time.deltaTime);
+        animator.SetFloat(MotionXHash, localMotion.x, settings.animationDampTime, Time.deltaTime);
+        animator.SetFloat(MotionZHash, localMotion.z, settings.animationDampTime, Time.deltaTime);
         animator.SetBool(IsCrouchingHash, movement.IsCrouching);
         animator.SetBool(IsFallingHash, !controller.isGrounded && movement.Motion.y < 0);
     }
