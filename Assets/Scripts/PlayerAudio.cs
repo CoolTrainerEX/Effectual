@@ -52,7 +52,7 @@ public class PlayerAudio : MonoBehaviour
         {
             var raycast = Physics.Raycast(foot.Transform.position, Vector3.down, out RaycastHit hitInfo, settings.footThreshold);
 
-            Play(raycast, ref foot.Played, raycast ? settings.walkSounds[hitInfo.transform.tag] : settings.walkSounds.Values.First());
+            Play(raycast, ref foot.Played, raycast && settings.walkSounds.TryGetValue(hitInfo.transform.tag, out List<AudioClip> clips) ? clips : settings.walkSounds.Values.First());
         }
 
         Play(movement.IsJumping, ref playedJump, settings.jumpSounds);
