@@ -18,7 +18,7 @@ public class PlayerAnimation : MonoBehaviour
     private PlayerMovement movement;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private void Start()
+    void Start()
     {
         animator = GetComponent<Animator>();
         controller = GetComponent<CharacterController>();
@@ -26,7 +26,7 @@ public class PlayerAnimation : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
+    void Update()
     {
         var localMotion = transform.InverseTransformDirection(movement.Motion);
 

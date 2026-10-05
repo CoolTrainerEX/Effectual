@@ -7,9 +7,14 @@ public class ControlsManager : MonoBehaviour
     public bool IsTouchscreen { get; private set; } = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private void Start()
+    void Start()
     {
         InputSystem.onActionChange += OnActionChange;
+    }
+
+    void OnDestroy()
+    {
+        InputSystem.onActionChange -= OnActionChange;
     }
 
     private void OnActionChange(object obj, InputActionChange change)

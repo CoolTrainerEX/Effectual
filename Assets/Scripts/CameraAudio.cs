@@ -9,14 +9,14 @@ public class CameraAudio : MonoBehaviour
     private Vector3 position;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private void Start()
+    void Start()
     {
         audio = GetComponent<AudioSource>();
         position = transform.position;
     }
 
     // Update is called once per frame
-    private void Update()
+    void Update()
     {
         var speed = (transform.position - position).magnitude / Time.deltaTime;
 

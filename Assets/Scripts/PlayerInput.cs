@@ -8,15 +8,34 @@ public class PlayerInput : MonoBehaviour
     public bool IsJumping { get; private set; } = false;
     public bool IsSprinting { get; private set; } = false;
 
+    private InputAction moveAction;
+    private InputAction crouchAction;
+    private InputAction jumpAction;
+    private InputAction sprintAction;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private void Start()
+    void Start()
     {
-        InputSystem.actions.FindAction("Move").performed += OnMove;
-        InputSystem.actions.FindAction("Move").canceled += OnMove;
-        InputSystem.actions.FindAction("Crouch").performed += OnCrouch;
-        InputSystem.actions.FindAction("Jump").performed += OnJump;
-        InputSystem.actions.FindAction("Jump").canceled += OnJump;
-        InputSystem.actions.FindAction("Sprint").performed += OnSprint;
+        moveAction = InputSystem.actions.FindAction("Move");
+        crouchAction = InputSystem.actions.FindAction("Crouch");
+        jumpAction = InputSystem.actions.FindAction("Jump");
+        sprintAction = InputSystem.actions.FindAction("Sprint");
+        moveAction.performed += OnMove;
+        moveAction.canceled += OnMove;
+        crouchAction.performed += OnCrouch;
+        jumpAction.performed += OnJump;
+        jumpAction.canceled += OnJump;
+        sprintAction.performed += OnSprint;
+    }
+
+    void OnDestroy()
+    {
+        moveAction.performed -= OnMove;
+        moveAction.canceled -= OnMove;
+        crouchAction.performed -= OnCrouch;
+        jumpAction.performed -= OnJump;
+        jumpAction.canceled -= OnJump;
+        sprintAction.performed -= OnSprint;
     }
 
     private void OnMove(InputAction.CallbackContext context)

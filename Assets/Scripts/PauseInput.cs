@@ -7,18 +7,23 @@ public class PauseInput : MonoBehaviour
 
     private InputActionMap playerActionMap;
     private InputActionMap uiActionMap;
+    private InputAction pauseAction;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private void Start()
+    void Start()
     {
         playerActionMap = InputSystem.actions.FindActionMap("Player");
         uiActionMap = InputSystem.actions.FindActionMap("UI");
-
-
-        InputSystem.actions.FindAction("Pause").performed += OnPause;
+        pauseAction = InputSystem.actions.FindAction("Pause");
+        pauseAction.performed += OnPause;
 
         playerActionMap.Enable();
         uiActionMap.Disable();
+    }
+
+    void OnDestroy()
+    {
+        pauseAction.performed -= OnPause;
     }
 
     private void OnPause(InputAction.CallbackContext context)

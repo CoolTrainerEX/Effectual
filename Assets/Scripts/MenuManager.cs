@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -5,12 +6,20 @@ using UnityEngine.UIElements;
 [RequireComponent(typeof(PanelRenderer))]
 public class MenuManager : MonoBehaviour
 {
+    private PanelRenderer panelRenderer;
     private int uiVersion = -1;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private void Start()
+    void Start()
     {
-        GetComponent<PanelRenderer>().RegisterUIReloadCallback(OnUIReload);
+        panelRenderer = GetComponent<PanelRenderer>();
+
+        panelRenderer.RegisterUIReloadCallback(OnUIReload);
+    }
+
+    void OnDestroy()
+    {
+        panelRenderer.UnregisterUIReloadCallback(OnUIReload);
     }
 
     private void OnUIReload(PanelRenderer panelRenderer, VisualElement rootElement, int version)

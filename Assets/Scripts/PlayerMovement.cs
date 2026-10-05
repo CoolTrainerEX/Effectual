@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isSprinting = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private void Start()
+    void Start()
     {
         controller = GetComponent<CharacterController>();
         input = GetComponent<PlayerInput>();
@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
+    void Update()
     {
         Motion = Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0) * new Vector3(input.Move.x, 0, input.Move.y);
         IsCrouching = input.IsCrouching;

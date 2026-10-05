@@ -12,7 +12,7 @@ public class CameraFov : MonoBehaviour
     private float currentVelocity = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private void Start()
+    void Start()
     {
         camera = GetComponent<CinemachineCamera>();
         baseFov = camera.Lens.FieldOfView;
@@ -20,7 +20,7 @@ public class CameraFov : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
+    void Update()
     {
         var speed = Vector3.Dot(camera.Follow.position - targetPos, transform.forward) / Time.deltaTime;
         var lens = camera.Lens;

@@ -12,24 +12,31 @@ public class GameUIManager : MonoBehaviour
 
     private ControlsManager controls;
     private PauseInput pauseInput;
+    private PanelRenderer panelRenderer;
     private TemplateContainer controlsElement;
     private TemplateContainer pauseElement;
     private bool paused = false;
     private int uiVersion = -1;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private void Start()
+    void Start()
     {
         controls = GetComponent<ControlsManager>();
         pauseInput = GetComponent<PauseInput>();
+        panelRenderer = GetComponent<PanelRenderer>();
 
-        GetComponent<PanelRenderer>().RegisterUIReloadCallback(OnUIReload);
+        panelRenderer.RegisterUIReloadCallback(OnUIReload);
 
         controls.MouseLocked = true;
     }
 
+    void OnDestroy()
+    {
+        panelRenderer.UnregisterUIReloadCallback(OnUIReload);
+    }
+
     // Update is called once per frame
-    private void Update()
+    void Update()
     {
         if (pauseElement == null) return;
 

@@ -30,7 +30,7 @@ public class PlayerAudio : MonoBehaviour
     private bool playedJump = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private void Start()
+    void Start()
     {
         audio = GetComponent<AudioSource>();
         movement = GetComponent<PlayerMovement>();
@@ -46,7 +46,7 @@ public class PlayerAudio : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
+    void Update()
     {
         foreach (var foot in feet.Values)
         {
